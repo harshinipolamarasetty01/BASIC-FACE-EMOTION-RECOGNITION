@@ -1,0 +1,18 @@
+from google.colab import drive
+drive.mount('/content/drive')
+!pip install deepface
+from deepface import DeepFace
+img_path = "IMAGE_PATH.JPG"
+from PIL import Image
+import matplotlib.pyplot as plt
+img=Image.open("IMAGE_PATH.jpg")
+plt.imshow(img)
+plt.axis('off')
+plt.show()
+result=DeepFace.analyze(img_path,actions=['emotion'])
+from deepface import DeepFace
+for face in result:
+  emotion=face['dominant_emotion']
+  print("Dominant emotion:",emotion)
+for face in result:
+  print("Face Region:",face['region'])
